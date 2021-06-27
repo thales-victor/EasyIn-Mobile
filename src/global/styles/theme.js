@@ -6,6 +6,7 @@ export const theme = {
     title: '#ECEDED',
     text: '#d6d4d4',
 
+    overlay: 'rgba(0,0,0,0.7)',
     background: '#151719'
   }
 }

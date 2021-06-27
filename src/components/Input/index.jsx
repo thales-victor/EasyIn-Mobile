@@ -3,11 +3,11 @@ import { View, Text, TextInput } from 'react-native';
 import { styles } from './styles';
 
 
-export function Input({label}) {
+export function Input({label, value, ...rest}) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
-      <TextInput style={styles.input}></TextInput>
+      <TextInput style={styles.input} {...rest}>{value}</TextInput>
     </View>
   );
 }

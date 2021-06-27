@@ -5,7 +5,8 @@ import { styles } from './styles';
 
 import LogoImg from '../../assets/Logo.png';
 import { Input } from '../../components/Input';
-import { SignInButton } from '../../components/SignInButton';
+import { PasswordInput } from '../../components/PasswordInput';
+import { DefaultButton } from '../../components/DefaultButton';
 import { Link } from '../../components/Link';
 
 export function SignIn() {
@@ -28,9 +29,9 @@ export function SignIn() {
 
           <View style={styles.form}>
             <Input label="Usuário / E-mail" />
-            <Input label="Senha" />
+            <PasswordInput label="Senha" />
 
-            <SignInButton title="Entrar" onPress={handleSignIn} />
+            <DefaultButton title="Entrar" onPress={handleSignIn} />
 
             <Link style={styles.footer} onPress={handleSignUp} />
 

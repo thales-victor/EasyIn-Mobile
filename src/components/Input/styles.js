@@ -4,7 +4,7 @@ import { theme } from '../../global/styles/theme';
 export const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginBottom: 25
+    marginBottom: 25,
   },
   label: {
     fontSize: 20,
@@ -12,7 +12,8 @@ export const styles = StyleSheet.create({
     color: theme.color.title,
   },
   input: {
-    width: 200,
+    borderRadius: 8,
+    width: 230,
     height: 50,
     borderWidth: 2,
     alignItems: 'center',
