@@ -2,25 +2,17 @@ import { StyleSheet } from 'react-native';
 import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 24,
-    marginBottom: 10,
-  },
   border: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 40,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: theme.color.secondary,
   },
-  platformInfo: {
+  header: {
+    height: 50,
+  },
+  title: {
+    fontWeight: 'bold',
     textAlign: 'center',
-    width: '50%',
-    color: theme.color.title,
-    fontWeight: "bold",
     fontSize: 18,
-  }
+    color: theme.color.title
+  },
 });

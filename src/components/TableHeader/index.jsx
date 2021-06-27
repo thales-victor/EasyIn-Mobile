@@ -1,16 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Table, Row } from 'react-native-table-component';
 import { styles } from './styles';
 
 
-export function TableHeader({ columns }) {
-return (
-    <View style={styles.container}>
-      <View style={styles.border}>
-        {
-          columns.map((item, index) => <Text key={index} style={styles.platformInfo}>{item}</Text>)
-        }
-      </View>
-    </View>
+export function TableHeader({ columns, columnWidth }) {
+  return (
+    <Table borderStyle={styles.border} >
+      <Row
+        data={columns}
+        widthArr={columnWidth}
+        style={styles.header}
+        textStyle={styles.title}
+      />
+    </Table>
   );
 }
