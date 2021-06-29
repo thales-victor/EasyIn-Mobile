@@ -9,6 +9,10 @@ import { DefaultButton } from '../../../components/DefaultButton';
 
 export function SelectOptionDialog({ isOpen, handleClose, handleSelectOption, options }) {
 
+  if (!options || options.length === 0){
+    return <View />;
+  }
+
   return (
     <ModalView visible={isOpen} closeModal={handleClose}>
       <FlatList

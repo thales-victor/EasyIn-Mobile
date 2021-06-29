@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "EasyIn-Mobile",
-    "slug": "EasyIn-Mobile",
+    "name": "EasyIn",
+    "slug": "EasyIn",
     "version": "1.0.0",
     "orientation": "portrait",
     "platforms": [

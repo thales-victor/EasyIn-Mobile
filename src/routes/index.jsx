@@ -7,43 +7,44 @@ import { AuthRoutes } from './auth.routes';
 import { PublicRoutes } from './public.routes';
 import { useAuth } from '../hooks/auth';
 import LogoImg from '../assets/Logo.png';
-import { Image, View } from 'react-native';
+import { Image, View, Text } from 'react-native';
 import { Background } from '../components/Background';
 import { DefaultButton } from '../components/DefaultButton';
+import { Link } from '../components/Link';
+import { theme } from '../global/styles/theme';
 
 export function Routes() {
-  const { user } = useAuth();
+  const [attempts, setAttempts] = useState(0);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { user, storage, syncStorage, setLoggedUser, logout } = useAuth();
 
   useEffect(() => {
-    if (user) {
-      getAuthenticate();
-    } else {
-      setIsAuthenticated(false);
-      // setIsAuthenticated(true);
-    }
+    init();
   }, []);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     getAuthenticate();
-  //   }
-  // }, [user]);
+  async function init() {
+    await syncStorage();
+  }
 
   async function getAuthenticate() {
-    if (user) {
-      const result = await LocalAuthentication.authenticateAsync();
-      setIsAuthenticated(result.success);
+    const result = await LocalAuthentication.authenticateAsync();
+    if (result.success) {
+      setLoggedUser(storage);
     }
   }
 
-  if (user && !isAuthenticated) {
+  function handleClearUser() {
+    logout();
+  }
+
+  if (storage && !user) {
     return (
       <Background>
         <Image source={LogoImg} />
-        <View style={{paddingHorizontal: 50}}>
-          <DefaultButton title="Autenticar" onPress={getAuthenticate} />
+        <View style={{ flex: 1, alignItems: 'center', paddingHorizontal: 50 }}>
+          <Text style={{ color: theme.color.title, fontSize: 24 }}>Bem-vindo, {storage.user.username}</Text>
+          <DefaultButton title="Login" onPress={getAuthenticate} />
+          <Link text="Trocar usuário" onPress={handleClearUser} style={{ color: theme.color.title, fontSize: 24 }} />
         </View>
       </Background>
     )

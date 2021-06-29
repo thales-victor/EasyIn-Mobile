@@ -13,18 +13,21 @@ import { theme } from '../../global/styles/theme';
 import { Login } from '../../services/api/Authentication';
 
 export function SignIn() {
-  const [username, setUsername] = useState('admin@admin');
-  const [password, setPassword] = useState('admin');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigation = useNavigation();
-  const { loading, signIn } = useAuth();
+  const { signIn } = useAuth();
+
 
   async function handleSignIn() {
-    
+    setIsLoading(true);
     const result = await Login(username, password);
     if (result){
       signIn(result);
     }
+    setIsLoading(false);
   }
 
   function handleSignUp() {
@@ -42,14 +45,14 @@ export function SignIn() {
             <Input label="Usuário / E-mail" value={username} onChangeText={setUsername} />
             <PasswordInput label="Senha" value={password} onChangeText={setPassword} />
             {
-              loading ? (
+              isLoading ? (
                 <ActivityIndicator color={theme.color.title} />
               ) : (
                 <DefaultButton title="Entrar" onPress={handleSignIn} />
               )
             }
 
-            <Link style={styles.footer} onPress={handleSignUp} />
+            <Link text="Cadastre-se" style={styles.footer} onPress={handleSignUp} />
 
           </View>
         </ScrollView>

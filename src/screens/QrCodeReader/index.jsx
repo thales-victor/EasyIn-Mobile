@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, SafeAreaView, Text, StyleSheet, Image } from 'react-native';
+import { View, SafeAreaView, Text, Image } from 'react-native';
 import { styles } from './styles';
 import { Header } from '../../components/Header';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { DefaultButton } from '../../components/DefaultButton';
-import { FontAwesome } from '@expo/vector-icons';
-import { theme } from '../../global/styles/theme';
 import QrImg from '../../assets/Qr.png';
-import { useNavigation } from '@react-navigation/native';
 import { CreateQrCodeLogin } from '../../services/api/QrCodeApi'
 import { SelectOptionDialog } from './SelectOptionDialog';
 import toast from '../../components/Alert';
@@ -19,8 +16,6 @@ export function QrCodeReader() {
   const [showCredentialOptions, setShowCredentialOptions] = useState(false);
   const [credentialOptions, setCredentialOptions] = useState([]);
   const [qrCodeData, setQrCodeData] = useState({});
-
-  const navigation = useNavigation();
 
   useEffect(() => {
     getPermission();
