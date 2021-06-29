@@ -11,6 +11,9 @@ export const styles = StyleSheet.create({
   primary: {
     backgroundColor: theme.color.secondary,
   },
+  warning: {
+    backgroundColor: theme.color.warning,
+  },
   secondary: {
     borderWidth: 2,
     borderColor: theme.color.secondary,

@@ -7,39 +7,74 @@ import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { PasswordInput } from '../../components/PasswordInput';
 import { DefaultButton } from '../../components/DefaultButton';
+import { GetUserInfo, UpdateUser } from '../../services/api/UserApi';
+import { HeaderActionButton } from '../../components/HeaderActionButton';
+import { useAuth } from '../../hooks/auth';
+import toast from '../../components/Alert';
 
 
 export function Profile() {
 
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [changePassword, setChangePassword] = useState(false);
-
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
 
   const navigation = useNavigation();
+  const { logout } = useAuth();
 
   useEffect(() => {
-
+    _getUserInfo();
   }, []);
+
+  async function _getUserInfo() {
+    const result = await GetUserInfo();
+    if (result) {
+      setUsername(result.username);
+      setEmail(result.email);
+    }
+  }
+
+  async function saveChanges() {
+    const result = await UpdateUser(username, email, oldPassword, newPassword, confirmPassword);
+    if (result) {
+      toast.success('Perfil atualizado')
+      setIsChangingPassword(false);
+      setUsername(result.username);
+      setEmail(result.email);
+      setOldPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+    }
+  }
 
   function handleGoBack() {
     navigation.navigate('Home');
   }
 
+  function handleLogoutPress() {
+    logout();
+  }
+
   return (
     <View style={styles.container}>
-      <Header title="Perfil" />
+      <Header
+        title="Perfil"
+        action={<HeaderActionButton icon="log-out" onPress={handleLogoutPress} />}
+
+      />
       <KeyboardAvoidingView>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.form}>
-            <Input label="Nome" value={name} onChangeText={setName} />
+            <Input label="Nome" value={username} onChangeText={setUsername} />
             <Input label="E-mail" value={email} onChangeText={setEmail} />
             {
-              changePassword && (
+              isChangingPassword && (
                 <>
-                  <PasswordInput label="Senha" value={password} onChangeText={setPassword} />
+                  <PasswordInput label="Senha antiga" value={oldPassword} onChangeText={setOldPassword} />
+                  <PasswordInput label="Nova Senha" value={newPassword} onChangeText={setNewPassword} />
                   <PasswordInput label="Confirmar senha" value={confirmPassword} onChangeText={setConfirmPassword} />
                 </>
               )
@@ -47,12 +82,12 @@ export function Profile() {
 
             <View style={styles.footer}>
               {
-                !changePassword && (
-                  <DefaultButton title="Alterar senha" onPress={setChangePassword} />
+                !isChangingPassword && (
+                  <DefaultButton title="Alterar senha" onPress={setIsChangingPassword} />
                 )
 
               }
-              <DefaultButton title="Salvar" />
+              <DefaultButton title="Salvar" onPress={saveChanges} />
               <DefaultButton title="Cancelar" secondary onPress={handleGoBack} />
             </View>
           </View>

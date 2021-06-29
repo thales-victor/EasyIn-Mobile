@@ -4,6 +4,10 @@
     "slug": "EasyIn-Mobile",
     "version": "1.0.0",
     "orientation": "portrait",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -17,16 +21,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.easyin.mobile"
     },
     "android": {
+      "package": "com.easyin.mobile",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#151719"
       }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
   }
 }

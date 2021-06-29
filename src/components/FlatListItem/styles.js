@@ -21,8 +21,11 @@ export const styles = StyleSheet.create({
   platformInfo: {
     textAlign: 'center',
     paddingLeft: 10,
-    width: '50%',
     color: theme.color.text,
     fontSize: 16,
+  },
+  textContainer: {
+    width: '50%',
+
   }
 });

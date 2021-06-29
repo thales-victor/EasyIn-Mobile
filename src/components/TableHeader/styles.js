@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
     height: 40,
     borderWidth: 2,
     borderColor: theme.color.secondary,
+    borderRadius: 8,
   },
   platformInfo: {
     textAlign: 'center',

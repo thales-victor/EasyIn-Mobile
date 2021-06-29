@@ -1,7 +1,5 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SignIn } from '../screens/SignIn';
-import { SignUp } from '../screens/SignUp';
 import { Home } from '../screens/Home';
 import { Credentials } from '../screens/Credentials';
 import { CredentialDetail } from '../screens/CredentialDetail';
@@ -22,8 +20,6 @@ export function AuthRoutes() {
         backgroundColor: theme.color.background
       }
     }}>
-      <Screen name="SignIn" component={SignIn} />
-      <Screen name="SignUp" component={SignUp} />
       <Screen name="Home" component={Home} />
       <Screen name="Credentials" component={Credentials} />
       <Screen name="CredentialDetail" component={CredentialDetail} />

@@ -4,18 +4,7 @@ import { theme } from '../../../global/styles/theme';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-    backgroundColor: theme.color.overlay,
-  },
-  modalView: {
-    width: '90%',
-    backgroundColor: theme.color.background,
-    borderRadius: 20,
-    paddingVertical: 35,
-    paddingHorizontal: 15,
-    alignItems: 'center',
+    marginTop: 30
   },
   modalText: {
     fontSize: 18,
@@ -24,7 +13,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center'
   },
   actions:{
-    width: '80%',
+    paddingHorizontal: 50,
     justifyContent: 'center',
     alignItems: 'center',
   }

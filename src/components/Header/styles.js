@@ -12,11 +12,21 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  icon: {
+    width: 40,
+    height: 35,
+    justifyContent: 'center',
+  },
   title: {
     flex: 1,
     textAlign: 'center',
     fontSize: 20,
     color: theme.color.title,
-    paddingRight: 24,
+  },
+  action: {
+    alignItems: 'flex-end'
+  },
+  paddingRight: {
+    paddingRight: 35,
   }
 });
