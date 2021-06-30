@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, SafeAreaView, Text, Image } from 'react-native';
+import { View, SafeAreaView, Text, Image, ActivityIndicator } from 'react-native';
 import { styles } from './styles';
 import { Header } from '../../components/Header';
 import { BarCodeScanner } from 'expo-barcode-scanner';
@@ -8,9 +8,11 @@ import QrImg from '../../assets/Qr.png';
 import { CreateQrCodeLogin } from '../../services/api/QrCodeApi'
 import { SelectOptionDialog } from './SelectOptionDialog';
 import toast from '../../components/Alert';
+import { theme } from '../../global/styles/theme';
 
 export function QrCodeReader() {
 
+  const [isLoading, setIsLoading] = useState(false);
   const [hasPermission, setHasPermission] = useState(false);
   const [scanned, setScanned] = useState(false);
   const [showCredentialOptions, setShowCredentialOptions] = useState(false);
@@ -45,19 +47,22 @@ export function QrCodeReader() {
 
   async function createQrCodeLogin(platformId, browserToken, credentialId) {
     setScanned(true);
+    setIsLoading(true);
     let result = await CreateQrCodeLogin(platformId, browserToken, credentialId);
     if (result) {
       if (result.credentials !== null && result.credentials.length > 0) {
-        setScanned(false);
+        setShowCredentialOptions(true);
         setCredentialOptions(result.credentials);
       } else {
         toast.success("Login criado com sucesso");
       }
+      setIsLoading(false);
     } else {
+      setIsLoading(false);
       toast.error('Não foi possível realizar o login. Tente novamente');
     }
   };
-  
+
   function handleCloseSelectOptionDialog() {
     setShowCredentialOptions(false);
   }
@@ -70,29 +75,37 @@ export function QrCodeReader() {
     <SafeAreaView style={styles.container}>
       <Header title="Leitor de QRCODE" />
       {
-        !scanned
+        isLoading
           ? (
-            <BarCodeScanner
-              onBarCodeScanned={scanned ? undefined : handleQrCodeScanned}
-              style={styles.camera}
-              type={BarCodeScanner.Constants.Type.back}
-              barCodeTypes={BarCodeScanner.Constants.BarCodeType.qr}
-            >
-              <View style={styles.imageContent} >
-                <Image
-                  style={styles.image}
-                  source={QrImg}
-                />
-              </View>
-            </BarCodeScanner>
+            <View style={styles.content}>
+              <ActivityIndicator color={theme.color.title} />
+            </View>
           )
           : (
-            <View style={styles.content}>
-              <DefaultButton
-                title="Ler QR Code"
-                onPress={() => setScanned(false)}
-              />
-            </View>
+            !scanned
+              ? (
+                <BarCodeScanner
+                  onBarCodeScanned={scanned ? undefined : handleQrCodeScanned}
+                  style={styles.camera}
+                  type={BarCodeScanner.Constants.Type.back}
+                  barCodeTypes={BarCodeScanner.Constants.BarCodeType.qr}
+                >
+                  <View style={styles.imageContent} >
+                    <Image
+                      style={styles.image}
+                      source={QrImg}
+                    />
+                  </View>
+                </BarCodeScanner>
+              )
+              : (
+                <View style={styles.content}>
+                  <DefaultButton
+                    title="Ler QR Code"
+                    onPress={() => setScanned(false)}
+                  />
+                </View>
+              )
           )
       }
 
