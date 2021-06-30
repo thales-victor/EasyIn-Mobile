@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     height: 50,
     borderWidth: 2,
     alignItems: 'center',
-    borderColor: theme.color.white,
+    borderColor: theme.color.title,
     color: theme.color.title,
     paddingHorizontal: 15,
     fontSize: 18,

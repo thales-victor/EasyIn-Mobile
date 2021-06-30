@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     color: theme.color.disabled,
   },
   enabled: {
-    borderColor: theme.color.white,
+    borderColor: theme.color.title,
     color: theme.color.title,
   },
   value: {
