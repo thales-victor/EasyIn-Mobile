@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
   },
   imageContent: {
     alignItems: 'center',
+    backgroundColor: theme.color.title,
   },
   image: {
     width: 300,

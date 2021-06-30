@@ -17,8 +17,9 @@ export const styles = StyleSheet.create({
     height: 50,
     borderWidth: 2,
     alignItems: 'center',
-    borderColor: theme.color.title,
+    borderColor: theme.color.white,
     color: theme.color.title,
     paddingHorizontal: 15,
+    fontSize: 18,
   }
 });

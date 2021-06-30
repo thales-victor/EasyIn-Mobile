@@ -24,10 +24,11 @@ export const styles = StyleSheet.create({
     color: theme.color.disabled,
   },
   enabled: {
-    borderColor: theme.color.title,
+    borderColor: theme.color.white,
     color: theme.color.title,
   },
   value: {
-    color: theme.color.text
+    color: theme.color.text,
+    fontSize: 18,
   }
 });
