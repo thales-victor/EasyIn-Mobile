@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   platformInfo: {
     textAlign: 'center',
     width: '50%',
-    color: theme.color.title,
+    color: theme.color.primary,
     fontWeight: "bold",
     fontSize: 18,
   }

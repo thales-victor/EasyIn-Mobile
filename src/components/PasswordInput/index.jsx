@@ -26,7 +26,7 @@ export function PasswordInput({ ...rest }) {
         <Feather
           name={showPassword ? 'eye' : 'eye-off'}
           size={18}
-          color={theme.color.title}
+          color={theme.color.primary}
         />
 
       </TouchableOpacity>

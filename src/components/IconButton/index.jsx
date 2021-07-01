@@ -24,7 +24,7 @@ export function IconButton({ name, onPress, disabled }) {
         color={
           disabled
             ? theme.color.disabled
-            : theme.color.title
+            : theme.color.primary
         }
         size={32}
       />

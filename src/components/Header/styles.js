@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     fontSize: 20,
-    color: theme.color.title,
+    color: theme.color.primary,
   },
   action: {
     alignItems: 'flex-end'

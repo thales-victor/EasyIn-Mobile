@@ -1,9 +1,8 @@
 export const theme = {
   color: {
-    primary: '#6163FF',
+    primary: '#ECEDED',
     secondary: '#3498DB',
-
-    title: '#ECEDED',
+    purple: '#6163FF',
     text: '#D6D4D4',
     disabled: '#A1A1A1A1',
     warning: '#ED4337',

@@ -42,9 +42,9 @@ export function Routes() {
       <Background>
         <Image source={LogoImg} />
         <View style={{ flex: 1, alignItems: 'center', paddingHorizontal: 50 }}>
-          <Text style={{ color: theme.color.title, fontSize: 24 }}>Bem-vindo, {storage.user.username}</Text>
+          <Text style={{ color: theme.color.primary, fontSize: 24 }}>Bem-vindo, {storage.user.username}</Text>
           <DefaultButton title="Login" onPress={getAuthenticate} />
-          <Link text="Trocar usuário" onPress={handleClearUser} style={{ color: theme.color.title, fontSize: 24 }} />
+          <Link text="Trocar usuário" onPress={handleClearUser} style={{ color: theme.color.primary, fontSize: 24 }} />
         </View>
       </Background>
     )

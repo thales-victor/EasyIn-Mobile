@@ -51,7 +51,7 @@ export function History() {
         title="Histórico de logins"
         action={
           isLoading
-            ? <ActivityIndicator color={theme.color.title} />
+            ? <ActivityIndicator color={theme.color.primary} />
             : <HeaderActionButton icon="refresh-cw" onPress={getHistory} />
         }
       />

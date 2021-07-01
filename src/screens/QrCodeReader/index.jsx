@@ -78,7 +78,7 @@ export function QrCodeReader() {
         isLoading
           ? (
             <View style={styles.content}>
-              <ActivityIndicator color={theme.color.title} />
+              <ActivityIndicator color={theme.color.primary} />
             </View>
           )
           : (

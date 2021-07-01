@@ -46,7 +46,7 @@ export function SignIn() {
             <PasswordInput label="Senha" value={password} onChangeText={setPassword} />
             {
               isLoading ? (
-                <ActivityIndicator color={theme.color.title} />
+                <ActivityIndicator color={theme.color.primary} />
               ) : (
                 <DefaultButton title="Entrar" onPress={handleSignIn} />
               )

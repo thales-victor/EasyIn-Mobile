@@ -7,7 +7,7 @@ import { theme } from '../../global/styles/theme';
 export function MenuButton({name, ...rest}) {
   return (
     <TouchableOpacity style={styles.container} activeOpacity={0.5} {...rest}>
-      <MaterialIcons name={name} size={60} color={theme.color.title}/>
+      <MaterialIcons name={name} size={60} color={theme.color.primary}/>
     </TouchableOpacity>
   );
 }

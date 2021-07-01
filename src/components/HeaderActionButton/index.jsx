@@ -10,7 +10,7 @@ export function HeaderActionButton({ icon, ...rest }) {
       <Feather
         name={icon}
         size={24}
-        color={theme.color.title}
+        color={theme.color.primary}
       />
     </BorderlessButton>
   );

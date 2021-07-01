@@ -6,8 +6,8 @@ import { useAuth } from "../../hooks/auth";
 import toast from "../../components/Alert";
 
 const axiosInstance = axios.create({
-  // baseURL: "http://localhost:5000/",
-  baseURL: "http://192.168.0.21/EasyIn-Back/",
+  baseURL: "http://192.168.0.21:5000/",
+  // baseURL: "http://192.168.0.21/EasyIn-Back/",
   timeout: 30000
 });
 
@@ -37,6 +37,7 @@ export const ApiBaseComponent = () => {
 };
 
 const requestHandler = (request) => {
+  console.log(user)
   if (shouldUseToken) {
     if (user) {
       request.headers.Authorization = "Bearer " + user.token;
@@ -54,7 +55,8 @@ const onFulfilled = (response) => {
 
 const onRejected = (error) => {
   const status = error?.response?.status;
-
+  
+  console.log(error);
   if (status === HttpStatus.UNAUTHORIZED) {
     logout();
   } else {

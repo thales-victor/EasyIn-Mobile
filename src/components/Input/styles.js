@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   label: {
     fontSize: 20,
     marginBottom: 5,
-    color: theme.color.title,
+    color: theme.color.primary,
   },
   input: {
     borderRadius: 8,
@@ -17,8 +17,8 @@ export const styles = StyleSheet.create({
     height: 50,
     borderWidth: 2,
     alignItems: 'center',
-    borderColor: theme.color.title,
-    color: theme.color.title,
+    borderColor: theme.color.primary,
+    color: theme.color.primary,
     paddingHorizontal: 15,
     fontSize: 18,
   }

@@ -25,7 +25,7 @@ export function Header({ title, action, removeGoBack }) {
             <Feather
               name="arrow-left"
               size={24}
-              color={theme.color.title}
+              color={theme.color.primary}
             />
           </BorderlessButton>
         )

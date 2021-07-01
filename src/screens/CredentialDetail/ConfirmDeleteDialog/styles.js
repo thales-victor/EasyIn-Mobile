@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: theme.color.title
+    color: theme.color.primary
   },
   actions:{
     width: '80%',

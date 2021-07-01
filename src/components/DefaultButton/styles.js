@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     textAlignVertical: 'center',
-    color: theme.color.title,
+    color: theme.color.primary,
     fontSize: 20,
     fontWeight: 'bold',
   }

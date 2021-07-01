@@ -43,7 +43,7 @@ export function SignUp() {
             <View style={styles.footer} >
             {
               isLoading ? (
-                <ActivityIndicator color={theme.color.title} />
+                <ActivityIndicator color={theme.color.primary} />
               ) : (
                 <DefaultButton title="Cadastrar" onPress={handleSignUp} />
               )

@@ -11,7 +11,7 @@ export function Checkbox({ isSelected, setSelection, label }) {
         value={isSelected}
         onValueChange={setSelection}
         style={styles.checkbox}
-        tintColors={{ true: theme.color.primary }}
+        tintColors={{ true: theme.color.purple }}
       />
       <Text style={styles.label}>{label}</Text>
     </View>
