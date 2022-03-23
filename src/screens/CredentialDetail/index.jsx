@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, KeyboardAvoidingView, FlatList } from 'react-native';
+import { View, ScrollView, KeyboardAvoidingView, FlatList, Text } from 'react-native';
 import { styles } from './styles';
 
 import { Header } from '../../components/Header';
@@ -18,6 +18,7 @@ import { GetAllPlatforms } from '../../services/api/PlatformApi'
 import { RandomPasswordDialog } from './RandomPasswordDialog';
 import { ConfirmDeleteDialog } from './ConfirmDeleteDialog';
 import toast from '../../components/Alert';
+import { theme } from '../../global/styles/theme';
 
 export function CredentialDetail({ route }) {
   const { id } = route.params;
@@ -162,7 +163,22 @@ export function CredentialDetail({ route }) {
           data={platforms}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
-            <FlatListItem id={item.id} columns={[item.name]} onPress={platform => handlePlatformSelect(platform)} />
+            <>
+              <FlatListItem id={item.id} columns={[item.name]} onPress={platform => handlePlatformSelect(platform)} />
+              <View style={styles.status}>
+                <View
+                  style={[
+                    styles.bulletStatus,
+                    {
+                      backgroundColor: item.allowIntegratedLogin ? theme.color.on : theme.color.warning
+                    }
+                  ]}
+                />
+                <Text style={styles.nameStatus}>
+                  {item.allowIntegratedLogin ? 'Permite login automatizado' : 'Não permite login automatizado'}
+                </Text>
+              </View>
+            </>
           )}
           ItemSeparatorComponent={ListDivider}
         />

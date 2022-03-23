@@ -37,7 +37,6 @@ export const ApiBaseComponent = () => {
 };
 
 const requestHandler = (request) => {
-  console.log(user)
   if (shouldUseToken) {
     if (user) {
       request.headers.Authorization = "Bearer " + user.token;
@@ -56,13 +55,12 @@ const onFulfilled = (response) => {
 const onRejected = (error) => {
   const status = error?.response?.status;
   
-  console.log(error);
   if (status === HttpStatus.UNAUTHORIZED) {
     logout();
   } else {
     let errorMessage = error?.response?.data?.message;
     if (errorMessage == null) {
-      errorMessage = JSON.stringify(error.response);
+      errorMessage = JSON.stringify(error.response.data);
     }
     toast.error(errorMessage);
   }
